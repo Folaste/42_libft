@@ -6,7 +6,7 @@
 /*   By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 17:52:48 by fleblanc          #+#    #+#             */
-/*   Updated: 2022/04/04 17:55:39 by fleblanc         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:50:40 by fleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr_fd(char *s, int fd)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return ;
 	while (s[i])
 	{
 		ft_putchar_fd(s[i], fd);

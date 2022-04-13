@@ -6,7 +6,7 @@
 /*   By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 19:29:27 by fleblanc          #+#    #+#             */
-/*   Updated: 2022/04/11 16:12:33 by fleblanc         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:44:53 by fleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	if (start < ft_strlen(s))
 		i = ft_strlen(s) - start;
 	if (i > len)

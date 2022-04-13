@@ -6,7 +6,7 @@
 /*   By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 10:12:09 by fleblanc          #+#    #+#             */
-/*   Updated: 2022/04/04 10:58:27 by fleblanc         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:46:56 by fleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 
 	i = 0;
+	if (!s1 || !set)
+		return (NULL);
 	len = ft_strlen(s1);
 	while (s1[i] && ft_strchr(set, s1[i]))
 		i++;

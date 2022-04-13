@@ -6,7 +6,7 @@
 /*   By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 10:58:40 by fleblanc          #+#    #+#             */
-/*   Updated: 2022/04/09 20:47:12 by fleblanc         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:48:18 by fleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	**ft_split(char const *s, char c)
 	int		index;
 	char	*s_copy;
 
+	if (!s)
+		return (NULL);
 	s_copy = (char *)s;
 	index = 0;
 	nb_words = ft_count_words(s, c);

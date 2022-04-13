@@ -6,7 +6,7 @@
 /*   By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 17:41:58 by fleblanc          #+#    #+#             */
-/*   Updated: 2022/04/12 17:53:11 by fleblanc         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:18:56 by fleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 	if (size * nmemb == 0)
 		return (malloc(1));
-	else if (nmemb > 2147483647 || size > 2147483647)
+	else if (nmemb > 2147483647 && size > 2147483647)
 		return (NULL);
 	array = malloc(nmemb * size);
-	if (array == NULL || nmemb * size > 2147483647)
+	if (array == NULL)
 		return (NULL);
 	ft_bzero(array, nmemb * size);
 	return (array);
