@@ -6,7 +6,7 @@
 /*   By: fleblanc <fleblanc@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:40:09 by fleblanc          #+#    #+#             */
-/*   Updated: 2022/04/13 16:52:03 by fleblanc         ###   ########.fr       */
+/*   Updated: 2022/04/14 13:04:03 by fleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		following = ft_lstnew(tmp);
 		if (following == NULL)
 		{
-			ft_lstdelone(following, del);
+			ft_lstclear(&result, del);
 			return (NULL);
 		}
 		ft_lstadd_back(&result, following);
