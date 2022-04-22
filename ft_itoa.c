@@ -6,29 +6,11 @@
 /*   By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 14:40:40 by fleblanc          #+#    #+#             */
-/*   Updated: 2022/04/12 15:26:25 by fleblanc         ###   ########.fr       */
+/*   Updated: 2022/04/18 11:32:21 by fleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static size_t	ft_intlen(long n)
-{
-	size_t	i;
-
-	i = 0;
-	if (n <= 0)
-	{
-		i++;
-		n *= -1;
-	}
-	while (n != 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i + 1);
-}
 
 char	*ft_itoa(int n)
 {
@@ -37,7 +19,7 @@ char	*ft_itoa(int n)
 	long int	copy_n;
 
 	copy_n = n;
-	len = ft_intlen(n);
+	len = ft_intlen(n) + 1;
 	array = ft_calloc(len, sizeof(char));
 	if (array == NULL)
 		return (NULL);
