@@ -6,7 +6,7 @@
 /*   By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 14:33:36 by fleblanc          #+#    #+#             */
-/*   Updated: 2022/04/18 11:30:25 by fleblanc         ###   ########.fr       */
+/*   Updated: 2022/04/22 12:27:23 by fleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*--- Personnal functions ---*/
 size_t	ft_intlen(long n);
+void	ft_putnbr_base_fd(int nbr, char *base, int fd);
 
 #endif
