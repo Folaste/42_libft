@@ -6,7 +6,7 @@
 /*   By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 14:33:36 by fleblanc          #+#    #+#             */
-/*   Updated: 2022/04/22 12:27:23 by fleblanc         ###   ########.fr       */
+/*   Updated: 2022/05/06 16:52:57 by fleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+
+# define BUFFER_SIZE 42
+# define HEX_BASE_MIN "0123456789abcdef"
+# define HEX_BASE_MAJ "0123456789ABCDEF"
+# define CASTS "cspdiuxX%"
 
 typedef struct s_list	t_list;
 struct	s_list
@@ -74,6 +83,90 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*--- Personnal functions ---*/
 size_t	ft_intlen(long n);
-void	ft_putnbr_base_fd(int nbr, char *base, int fd);
+
+
+/*--- Get_Next_Line functions ---*/
+char	*get_next_line(int fd);
+char	*ft_read(int fd, char *buffer);
+char	*ft_recover_line(char *buffer);
+int		ft_find_eol(char *str);
+char	*ft_new_buffer(char *old_buffer);
+char	*ft_strjoin_gnl(const char *s1, const char *s2);
+size_t	ft_strlen_gnl(const char *s);
+char	*ft_strchr_gnl(const char *s, int c);
+char	*ft_substr_gnl(const char *s, unsigned int start, size_t len);
+size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t size);
+
+/*--- ft_printf functions ---*/
+typedef struct s_printf	t_printf;
+struct	s_printf
+{
+	va_list	args;
+	int		dot;
+	int		zero;
+	int		minus;
+	int		space;
+	int		plus;
+	int		hash;
+	int		tot_len;
+	int		width;
+	int		count_flags;
+};
+
+/*--- Fonctions principales  ---*/
+int		ft_printf(const char *format, ...);
+int		ft_read_format(t_printf *tab, const char *format, int i);
+
+/*--- Fonctions de gestion de la structure ---*/
+void	ft_init_tab(t_printf *tab);
+void	ft_reset_tab(t_printf *tab);
+void	ft_count_flags(t_printf *tab);
+
+/*--- Fonctions de lecture des flags et des casts ---*/
+int		ft_check_flags(t_printf *tab, const char *format, int i);
+int		ft_check_cast(t_printf *tab, const char *format, int i);
+
+/*--- Fonctions d'écriture ---*/
+int		ft_printf_char(t_printf *tab, int i);
+
+int		ft_printf_string(t_printf *tab, int i);
+void	ft_printf_string_dot(t_printf *tab, char *str, int index);
+void	ft_printf_string_width(t_printf *tab, char *str, int index);
+void	ft_printf_string_minus(t_printf *tab, char *str, int index);
+
+int		ft_printf_pointer(t_printf *tab, int i);
+void	ft_putptr_fd(unsigned long p, t_printf *tab, int fd, char *base);
+int		ft_hexalen(unsigned long p);
+void	ft_printf_pointer_minus(t_printf *tab, unsigned long p, int index);
+void	ft_printf_pointer_width(t_printf *tab, unsigned long p, int index);
+
+int		ft_printf_hexa(t_printf *tab, int i, char x_case);
+void	ft_printf_hexa_minus(t_printf *tab, unsigned int x,
+			char *base, int index);
+void	ft_printf_hexa_zero(t_printf *tab, unsigned int x,
+			char *base, int index);
+void	ft_printf_hexa_hash(t_printf *tab, unsigned int x, char *base);
+void	ft_printf_hexa_width(t_printf *tab, unsigned int x,
+			char *base, int index);
+
+int		ft_printf_unsigned(t_printf *tab, int i);
+void	ft_putnbr_u_fd(unsigned int u, t_printf *tab, int fd);
+void	ft_printf_unsigned_minus(t_printf *tab, unsigned int u, int index);
+void	ft_printf_unsigned_zero(t_printf *tab, unsigned int u, int index);
+void	ft_printf_unsigned_width(t_printf *tab, unsigned int u, int index);
+
+int		ft_printf_number(t_printf *tab, int i);
+void	ft_choice_write(t_printf *tab, int nbr, int size, int index);
+void	ft_printf_number_minus(t_printf *tab, int nbr, int index, int size);
+void	ft_printf_number_zero(t_printf *tab, int nbr, int index, int size);
+void	ft_printf_number_width(t_printf *tab, int nbr, int index, int size);
+void	ft_printf_number_dot(t_printf *tab, int nbr, int index, int size);
+
+/*--- Fonctions de retour de valeur ---*/
+void	ft_return_value_s(t_printf *tab);
+void	ft_return_value_p(t_printf *tab);
+void	ft_return_value_x(t_printf *tab);
+void	ft_return_value_u(t_printf *tab);
+void	ft_return_value_nbr(t_printf *tab);
 
 #endif
