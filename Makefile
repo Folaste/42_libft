@@ -123,7 +123,7 @@ BASENAME	= `basename $(PWD)`
 all: 		$(NAME)
 
 $(NAME):	$(OBJS)
-		@$(AR) $(NAME) $(OBJ)
+		@$(AR) $(NAME) $(OBJS)
 		@printf $(CR)$(GREEN)"✓ $(NAME) is created\n"$(EOC)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
