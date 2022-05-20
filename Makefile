@@ -6,7 +6,7 @@
 #    By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 13:19:35 by fleblanc          #+#    #+#              #
-#    Updated: 2022/05/17 19:15:04 by fleblanc         ###   ########.fr        #
+#    Updated: 2022/05/20 10:42:00 by fleblanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCDIR		= ./sources
 # List of sources files
 
 SRCNAME		= conversions/ft_atoi.c \
+			  conversions/ft_atoll.c \
 			  conversions/ft_itoa.c \
 			  conversions/ft_tolower.c \
 			  conversions/ft_toupper.c \
@@ -113,8 +114,14 @@ OBJS		= $(addprefix $(OBJDIR)/, $(SRCNAME:.c=.o))
 CR			= "\r"$(CLEAR)
 CLEAR       = "\\033[0K"
 EOC			= "\033[0;0m"
+GREY		= "\033[0;30:"
 RED			= "\033[0;31m"
 GREEN		= "\033[0;32m"
+YELLOW		= "\033[0;33m"
+BLUE		= "\033[0;34m"
+PURPLE		= "\033[0;35m"
+CYAN		= "\033[0;36m"
+WHITE		= "\033[0;37m"
 BASENAME	= `basename $(PWD)`
 
 # **************************************************************************** #
@@ -123,7 +130,7 @@ BASENAME	= `basename $(PWD)`
 all: 		$(NAME)
 
 $(NAME):	$(OBJS)
-		@$(AR) $(NAME) $(OBJ)
+		@$(AR) $(NAME) $(OBJS)
 		@printf $(CR)$(GREEN)"✓ $(NAME) is created\n"$(EOC)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
@@ -134,7 +141,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 clean:
 		@if [ -d $(OBJDIR) ]; then \
 			$(RM) $(OBJDIR) \
-			&& printf $(CR)$(RED)"✗ The objects files of libft are cleaned\n"$(EOC); \
+			&& printf $(CR)$(YELLOW)"✗ The objects files of libft are cleaned\n"$(EOC); \
 		fi
 
 fclean: clean
