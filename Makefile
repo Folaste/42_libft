@@ -6,7 +6,7 @@
 #    By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 13:19:35 by fleblanc          #+#    #+#              #
-#    Updated: 2022/05/20 10:42:00 by fleblanc         ###   ########.fr        #
+#    Updated: 2022/06/03 12:18:06 by fleblanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRCNAME		= conversions/ft_atoi.c \
 			  print/ft_putnbr_base_fd.c \
 			  print/ft_putnbr_fd.c \
 			  print/ft_putstr_fd.c \
+			  sort/ft_sort_int_tab.c \
 			  string/ft_split.c \
 			  string/ft_strchr.c \
 			  string/ft_strdup.c \
@@ -127,16 +128,17 @@ BASENAME	= `basename $(PWD)`
 # **************************************************************************** #
 # Rules
 
-all: 		$(NAME)
-
-$(NAME):	$(OBJS)
-		@$(AR) $(NAME) $(OBJS)
-		@printf $(CR)$(GREEN)"✓ $(NAME) is created\n"$(EOC)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 		@$(MKDIR) $(dir $@)
 		@$(CC) $(WFLAGS) $(IFLAGS) -c $< -o $@
 		@printf $(CR)"[ libft/%s ]" $@
+
+all: 		$(NAME)
+
+$(NAME):	$(OBJS)
+		@$(AR) $(NAME) $(OBJS)
+		@printf $(CR)$(GREEN)"✓ $(NAME) is created\n"$(EOC)
 
 clean:
 		@if [ -d $(OBJDIR) ]; then \
