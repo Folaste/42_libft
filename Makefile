@@ -132,18 +132,17 @@ BASENAME	= `basename $(PWD)`
 # **************************************************************************** #
 # Rules
 
-
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-		@$(MKDIR) $(dir $@)
-		@$(CC) $(WFLAGS) $(IFLAGS) -c $< -o $@
-		@printf $(CR)"[ libft/%s ]" $@
-
 all: 		$(NAME)
 
 $(NAME):	$(OBJS)
 		@$(AR) $(NAME) $(OBJS)
 		@printf $(CR)$(GREEN)"✓ $(NAME) is created\n"$(EOC)
 
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+		@$(MKDIR) $(dir $@)
+		@$(CC) $(WFLAGS) $(IFLAGS) -c $< -o $@
+		@printf $(CR)"[ libft/%s ]" $@
+		
 clean:
 		@if [ -d $(OBJDIR) ]; then \
 			$(RM) $(OBJDIR) \
