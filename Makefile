@@ -6,7 +6,7 @@
 #    By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 13:19:35 by fleblanc          #+#    #+#              #
-#    Updated: 2022/06/03 12:18:06 by fleblanc         ###   ########.fr        #
+#    Updated: 2022/06/10 14:00:44 by fleblanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		= libft.a
 # **************************************************************************** #
 # Compilator
 
-CC			= gcc
+CC			= gcc -ggdb
 WFLAGS		= -Wall -Wextra -Werror
 IFLAGS		= -I $(INCDIR)
 
@@ -33,16 +33,20 @@ RM			= rm -rf
 # **************************************************************************** #
 # Directories
 
-INCDIR		= ./includes
-OBJDIR		= ./objects
-SRCDIR		= ./sources
+INCDIR		= ./inc
+OBJDIR		= ./obj
+SRCDIR		= ./src
 
 # **************************************************************************** #
 # List of sources files
 
 SRCNAME		= conversions/ft_atoi.c \
 			  conversions/ft_atoll.c \
+			  conversions/ft_btoc.c \
+			  conversions/ft_btoi.c \
+			  conversions/ft_ctob.c \
 			  conversions/ft_itoa.c \
+			  conversions/ft_itob.c \
 			  conversions/ft_tolower.c \
 			  conversions/ft_toupper.c \
 			  counters/ft_intlen.c \
