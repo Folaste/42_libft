@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_print_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fleblanc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fleblanc <fleblanc@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 14:24:16 by fleblanc          #+#    #+#             */
-/*   Updated: 2022/03/28 16:00:17 by fleblanc         ###   ########.fr       */
+/*   Created: 2022/06/10 16:33:47 by fleblanc          #+#    #+#             */
+/*   Updated: 2022/06/10 16:46:20 by fleblanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "../inc/libft.h"
 
-int	ft_isalpha(int c)
+void	ft_print_error(char *msg)
 {
-	if ((65 <= c && c <= 90) || (97 <= c && c <= 122))
-		return (1024);
-	return (0);
+	write(2, "Error.\n", 7);
+	write(2, msg, ft_strlen(msg));
+	exit(EXIT_FAILURE);
 }
