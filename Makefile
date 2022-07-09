@@ -20,7 +20,6 @@ NAME		= libft.a
 
 CC			= gcc -ggdb
 WFLAGS		= -Wall -Wextra -Werror
-IFLAGS		= -I $(INCDIR)
 
 # **************************************************************************** #
 # System Commands
